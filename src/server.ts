@@ -1,8 +1,18 @@
 import express from 'express';
+import path from 'path';
+
+import './database/conection';
+import 'express-async-errors';
+
+import routes from './routes';
+import errorHandler from './errors/handler';
 
 const app = express();
+app.use(express.json());
+app.use(routes);
+app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
+app.use(errorHandler);
 
-app.get('/', (req, res) => {
-  return res.send({ message: 'ola' });
+app.listen(3333, () => {
+  console.log('Servidor Iniciado!');
 });
-app.listen(3333);
