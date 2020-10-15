@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
 import Orphanage from '../models/Orphanage';
+import Image from '../models/Image';
 import orphanageView from '../views/OrphanagesView';
 import * as Yup from 'yup';
 
@@ -45,49 +46,35 @@ class OrphanageController {
     const orphanageRepository = getRepository(Orphanage);
 
     const requestImages = request.files as Express.Multer.File[];
-    const images = requestImages.map(image => ({
+    const images: Image[] = requestImages.map(image => ({
       path: image.filename,
     }));
-
-    /*if (
-      !about ||
-      !instructions ||
-      !latitude ||
-      !longitude ||
-      !open_on_weekends ||
-      !name ||
-      !opening_hours ||
-      !images.length
-    ) {
-      return response
-        .status(400)
-        .json({ error: 'Alguns parâmetros não foram passados!' });
-    }
-    */
 
     const dataOrphanage = {
       about,
       instructions,
       latitude,
       longitude,
-      open_on_weekends,
+      open_on_weekends: Boolean(open_on_weekends),
       opening_hours,
       name,
       images,
     };
 
     const schema = Yup.object().shape({
-      about: Yup.string().required().max(300),
-      instructions: Yup.string().required(),
+      name: Yup.string().required(),
       latitude: Yup.number().required(),
       longitude: Yup.number().required(),
-      open_on_weekends: Yup.boolean().required(),
-      name: Yup.string().required(),
+      about: Yup.string().required().max(300),
+      instructions: Yup.string().required(),
       opening_hours: Yup.string().required(),
+      open_on_weekends: Yup.boolean().required(),
       images: Yup.array().required(),
     });
 
-    await schema.validate(dataOrphanage, { abortEarly: false });
+    await schema.validate(dataOrphanage, {
+      abortEarly: false,
+    });
 
     const orphanage = orphanageRepository.create(dataOrphanage);
 
