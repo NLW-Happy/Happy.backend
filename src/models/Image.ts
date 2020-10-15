@@ -10,14 +10,14 @@ import Orphanage from './Orphanage';
 @Entity('images')
 class Image {
   @PrimaryGeneratedColumn('increment')
-  readonly id: number;
+  readonly id?: number;
 
   @Column()
   readonly path: string;
 
   @ManyToOne(() => Orphanage, orphanage => orphanage.images)
   @JoinColumn({ name: 'orphanage_id' })
-  readonly orphanage: Orphanage;
+  readonly orphanage?: Orphanage;
 }
 
 export default Image;
