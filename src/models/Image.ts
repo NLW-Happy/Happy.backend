@@ -4,6 +4,8 @@ import {
   Entity,
   ManyToOne,
   JoinColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import Orphanage from './Orphanage';
 
@@ -14,6 +16,12 @@ class Image {
 
   @Column()
   readonly path: string;
+
+  @CreateDateColumn()
+  readonly created_at: Date;
+
+  @UpdateDateColumn()
+  readonly updated_at: Date;
 
   @ManyToOne(() => Orphanage, orphanage => orphanage.images)
   @JoinColumn({ name: 'orphanage_id' })

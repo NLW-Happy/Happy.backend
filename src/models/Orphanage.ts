@@ -4,6 +4,8 @@ import {
   Entity,
   OneToMany,
   JoinColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import Image from './Image';
 
@@ -32,6 +34,12 @@ class Orphanage {
 
   @Column()
   readonly open_on_weekends: boolean;
+
+  @CreateDateColumn()
+  readonly created_at: Date;
+
+  @UpdateDateColumn()
+  readonly updated_at: Date;
 
   @OneToMany(() => Image, image => image.orphanage, {
     cascade: ['insert', 'update'],
