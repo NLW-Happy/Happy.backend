@@ -40,6 +40,7 @@ class OrphanageController {
       longitude,
       open_on_weekends,
       name,
+      user_id,
       opening_hours,
     } = request.body as Orphanage;
 
@@ -51,6 +52,7 @@ class OrphanageController {
     }));
 
     const dataOrphanage = {
+      user_id,
       about,
       instructions,
       latitude,
@@ -62,6 +64,7 @@ class OrphanageController {
     };
 
     const schema = Yup.object().shape({
+      user_id: Yup.number().required(),
       name: Yup.string().required(),
       latitude: Yup.number().required(),
       longitude: Yup.number().required(),
