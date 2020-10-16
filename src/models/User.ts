@@ -4,7 +4,10 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
+  JoinColumn,
 } from 'typeorm';
+import Orphanage from './Orphanage';
 
 @Entity('users')
 class User {
@@ -31,6 +34,12 @@ class User {
 
   @UpdateDateColumn()
   readonly updated_at: Date;
+
+  @OneToMany(() => Orphanage, orphanage => orphanage.user, {
+    cascade: ['insert', 'update'],
+  })
+  @JoinColumn({ name: 'user_id' })
+  readonly orphanages: Orphanage[];
 }
 
 export default User;
