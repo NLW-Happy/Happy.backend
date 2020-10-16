@@ -18,10 +18,10 @@ class Image {
   readonly path: string;
 
   @CreateDateColumn()
-  readonly created_at: Date;
+  readonly created_at?: Date;
 
   @UpdateDateColumn()
-  readonly updated_at: Date;
+  readonly updated_at?: Date;
 
   @ManyToOne(() => Orphanage, orphanage => orphanage.images)
   @JoinColumn({ name: 'orphanage_id' })
