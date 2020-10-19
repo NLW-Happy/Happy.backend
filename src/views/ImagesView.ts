@@ -4,7 +4,7 @@ class ImagesView {
   private render(image: Image) {
     return {
       id: image.id,
-      url: `http://localhost:3333/uploads/${image.path}`,
+      url: `http://10.10.0.111:3333/uploads/${image.path}`,
     };
   }
 
