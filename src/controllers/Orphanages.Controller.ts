@@ -42,7 +42,7 @@ class OrphanageController {
       name,
       user_id,
       opening_hours,
-    } = request.body as Orphanage;
+    } = request.body;
 
     const orphanageRepository = getRepository(Orphanage);
 
@@ -57,7 +57,7 @@ class OrphanageController {
       instructions,
       latitude,
       longitude,
-      open_on_weekends: Boolean(open_on_weekends),
+      open_on_weekends: open_on_weekends === 'true',
       opening_hours,
       name,
       images,
