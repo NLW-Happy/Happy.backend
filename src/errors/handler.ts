@@ -1,11 +1,16 @@
 import { ErrorRequestHandler } from 'express';
-import { ValidationError } from 'yup';
+import { ValidationError, Request, Response, NextFunction } from 'yup';
 
 interface ValidationErrors {
   [key: string]: string[];
 }
 
-const errorHandler: ErrorRequestHandler = (error, request, response, next) => {
+const errorHandler: ErrorRequestHandler = (
+  error: Error, 
+  request: Request, 
+  response: Response, 
+  next: NextFunction
+) => {
   if (error instanceof ValidationError) {
     let errors: ValidationErrors = {};
 
