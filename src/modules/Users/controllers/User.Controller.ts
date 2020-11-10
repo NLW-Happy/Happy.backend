@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { hash } from 'bcryptjs';
 import { getRepository } from 'typeorm';
-import User from '../models/User';
+import User from '../entities/User';
 import userView from '../views/UserView';
 import * as Yup from 'yup';
 

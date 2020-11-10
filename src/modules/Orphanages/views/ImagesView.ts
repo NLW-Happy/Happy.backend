@@ -1,4 +1,4 @@
-import Image from '../models/Image';
+import Image from '../entities/Image';
 
 class ImagesView {
   private render(image: Image) {

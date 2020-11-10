@@ -7,7 +7,7 @@ import {
   OneToMany,
   JoinColumn,
 } from 'typeorm';
-import Orphanage from './Orphanage';
+import Orphanage from '../entities/User';
 
 @Entity('users')
 class User {

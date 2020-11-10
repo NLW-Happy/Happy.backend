@@ -1,4 +1,4 @@
-import User from '../models/User';
+import User from '../entities/User';
 
 class UserView {
   public render(user: User) {

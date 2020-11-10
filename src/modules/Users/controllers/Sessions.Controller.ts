@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { compare } from 'bcryptjs';
 import { getRepository } from 'typeorm';
-import Session from '../models/User';
+import Session from '../entities/User';
 import * as Yup from 'yup';
 
 class SessionController {

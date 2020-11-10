@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
-import Orphanage from '../models/Orphanage';
-import Image from '../models/Image';
+import Orphanage from '../entities/Orphanage';
+import Image from '../entities/Image';
 import orphanageView from '../views/OrphanagesView';
 import * as Yup from 'yup';
 

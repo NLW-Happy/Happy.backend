@@ -10,7 +10,7 @@ import {
 } from 'typeorm';
 
 import Image from './Image';
-import User from './User';
+import User from '../../Users/entities/User';
 
 @Entity('orphanages')
 class Orphanage {

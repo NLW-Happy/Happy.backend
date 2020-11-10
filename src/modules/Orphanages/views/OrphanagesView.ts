@@ -1,4 +1,4 @@
-import Orphanage from '../models/Orphanage';
+import Orphanage from '../entities/Orphanage';
 import imageViews from './ImagesView';
 
 class OrphanageViews {
